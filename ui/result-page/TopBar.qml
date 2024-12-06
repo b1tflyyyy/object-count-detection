@@ -64,6 +64,7 @@ Rectangle {
 
             cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
             onClicked: {
+                objectCountController.Calculate_Objects_Count();
                 console.log("calc clicked");
             }
         }
