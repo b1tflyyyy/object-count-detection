@@ -1,5 +1,14 @@
 <RCC>
     <qresource prefix = "/">
         <file>main-window/MainWindow.qml</file>
+        <file>select-image/SelectImagePage.qml</file>
+        <file>pages-controller/PagesController.qml</file>
+        <file>result-page/ImageArea.qml</file>
+        <file>result-page/ResultPage.qml</file>
+        <file>result-page/TopBar.qml</file>
+        <file>assets/select-image.png</file>
+        <file>assets/main-background.jpg</file>
+        <file>assets/turn-back.png</file>
+        <file>assets/calc.png</file>
     </qresource>
 </RCC>
