@@ -23,12 +23,21 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+
+#include <object-count-controller.hpp>
 
 int main(int argc, char** argv)
 {
     QGuiApplication app{ argc, argv };
     QQmlApplicationEngine engine{};
     
+    AObject_Count_Controller object_count_controller{};
+
+    auto* ctx{ engine.rootContext() };
+
+    ctx->setContextProperty("objectCountController", &object_count_controller);
+
     const QUrl& url{ QStringLiteral("qrc:/main-window/MainWindow.qml") };
     engine.load(url);
 

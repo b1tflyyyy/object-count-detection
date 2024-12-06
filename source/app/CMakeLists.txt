@@ -28,7 +28,6 @@ set(QML_SOURCES "${CMAKE_SOURCE_DIR}/ui/qml.qrc")
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${QML_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE 
-    qt_lib
-    opencv_lib
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    object_count_controller
 )
