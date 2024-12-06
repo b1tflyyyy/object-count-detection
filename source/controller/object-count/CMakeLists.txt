@@ -23,4 +23,12 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-add_subdirectory(object-count)
+set(LIB_NAME object_count_controller)
+
+set(SOURCES object-count-controller.cpp)
+set(HEADERS object-count-controller.hpp)
+
+add_library(${LIB_NAME} STATIC ${SOURCES} ${HEADERS})
+
+target_link_libraries(${LIB_NAME} PUBLIC qt_lib opencv_lib)
+target_include_directories(${LIB_NAME} PUBLIC ./)
