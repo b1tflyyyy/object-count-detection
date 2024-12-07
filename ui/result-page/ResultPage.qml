@@ -8,9 +8,6 @@ Rectangle {
 
     signal goBack()
 
-    width: parent.width
-    height: parent.height
-
     ImageArea {
         id: _imageArea
         
