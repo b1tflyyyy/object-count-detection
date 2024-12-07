@@ -23,7 +23,6 @@ Rectangle {
 
             cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
             onClicked: {
-                console.log("go back clicked");
                 goBackClicked();
             }
         }
@@ -35,7 +34,7 @@ Rectangle {
         anchors {
             verticalCenter: parent.verticalCenter
             left: _goBack.right
-            leftMargin: 100
+            leftMargin: 30
         }
 
         font {
@@ -65,8 +64,24 @@ Rectangle {
             cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
             onClicked: {
                 objectCountController.Calculate_Objects_Count();
-                console.log("calc clicked");
             }
         }
+    }
+
+    Text {
+        id: _objectsCountText
+
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: _calcImage.right
+            leftMargin: 25
+        }
+
+        font {
+            pointSize: 22
+            bold: true
+        }
+
+        text: qsTr("Count: " + objectCountController.objectsCount)
     }
 }
