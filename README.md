@@ -21,3 +21,4 @@ This is a fun project written in C++ that can determine the number of black shap
 ![Image](images/1_obj.png)
 
 ## 🔗 Test with 4 objects
+![Image](images/4_objs.png)
