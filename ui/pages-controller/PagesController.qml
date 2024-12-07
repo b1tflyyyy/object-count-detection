@@ -17,8 +17,7 @@ StackView {
             id: _selectImage
 
             onImageSelected: function(path) {
-                let item = _resultComp.createObject(_stackView, { imagePath: path });
-                _stackView.push(item);
+                _stackView.push(_resultComp, { imagePath: path, height: _stackView.height, width: _stackView.width });
             }
         }
     }
