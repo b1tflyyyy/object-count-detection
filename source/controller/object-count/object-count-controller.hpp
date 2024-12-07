@@ -31,6 +31,7 @@
 #include <QVector>
 #include <QUrl>
 #include <QPair>
+#include <QStack>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>

@@ -53,8 +53,6 @@ void AObject_Count_Controller::Calculate_Objects_Count()
     const auto rows{ Image.rows };
     const auto cols{ Image.cols };
 
-    qDebug() << std::format("rows count: {}, cols count: {}", rows, cols);
-
     Visited.resize(rows);
     for (auto& row : Visited)
     {
@@ -76,12 +74,9 @@ void AObject_Count_Controller::Calculate_Objects_Count()
         }
     }
 
-    // TODO: handle visual 
     if (counter != Objects_Count)
     {
         Objects_Count = counter;
-
-        qDebug() << "Objects count: " << counter;
         emit objectsCountChanged(Objects_Count);
     }
 }
@@ -95,22 +90,30 @@ std::size_t AObject_Count_Controller::Get_Objects_Count() const noexcept
 // ----------------------------------------------------------------------------------------------------------------
 void AObject_Count_Controller::DFS(std::ptrdiff_t y, std::ptrdiff_t x, const std::ptrdiff_t rows, const std::ptrdiff_t cols)
 {
-    // TODO: remove recursion
-    Visited[y][x] = true;
+    QStack<QPair<std::ptrdiff_t, std::ptrdiff_t>> stack{};
+    stack.push({ x, y });
 
-    for (const auto [dx, dy] : Directions)
+    while (!std::empty(stack))
     {
-        const auto nx{ x + dx };
-        const auto ny{ y + dy };
+        const auto [x, y]{ stack.top() };
+        stack.pop();
 
-        if (nx >= 0 && nx < cols && ny >= 0 && ny < rows)
+        Visited[y][x] = true;
+        
+        for (const auto [dx, dy] : Directions)
         {
-            if (!Visited[ny][nx])
+            const auto nx{ x + dx };
+            const auto ny{ y + dy };
+
+            if (nx >= 0 && nx < cols && ny >= 0 && ny < rows)
             {
-                uchar* ptr{ Image.ptr(ny) };
-                if (ptr[nx] < 100) // < 100 (-> smth like black)
+                if (!Visited[ny][nx])
                 {
-                    DFS(ny, nx, rows, cols);
+                    uchar* ptr{ Image.ptr(ny) };
+                    if (ptr[nx] < 100) // < 100 (-> smth like black)
+                    {
+                        stack.push({ nx, ny });
+                    }
                 }
             }
         }
